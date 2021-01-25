@@ -1,0 +1,94 @@
+Tree is empty
+2016: inserted
+List of elements
+2016
+
+1800: inserted
+List of elements
+1800
+2016
+
+999: inserted
+171: inserted
+164: inserted
+List of elements
+164
+171
+999
+1800
+2016
+
+10: not found after 5 comparison(s)
+1800: found after 2 comparison(s)
+405: inserted
+List of elements
+164
+171
+405
+999
+1800
+2016
+
+999: not inserted
+List of elements
+164
+171
+405
+999
+1800
+2016
+
+206: not deleted
+List of elements
+164
+171
+405
+999
+1800
+2016
+
+64: not found after 5 comparison(s)
+List of elements
+164
+171
+405
+999
+1800
+2016
+
+1800: deleted
+List of elements
+164
+171
+405
+999
+2016
+
+405: deleted
+List of elements
+164
+171
+999
+2016
+
+171: deleted
+164: deleted
+List of elements
+999
+2016
+
+999: deleted
+List of elements
+2016
+
+5: inserted
+9: inserted
+2: inserted
+4: inserted
+List of elements
+2
+4
+5
+9
+2016
+
