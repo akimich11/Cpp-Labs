@@ -1,0 +1,109 @@
+#include <iostream>
+#include <stdio.h>
+#include <cstring>
+#include <string>
+#include <cmath>
+#include <fstream>
+
+using  namespace std;
+
+string stringtolow(string s){
+    int size = s.length();
+    for(int i = 0; i < size; i++){
+        s[i] = tolower(s[i]);
+    }
+    return s;
+}
+
+string inttostring(int num){
+    if(num < 0){
+        num = abs(num);
+        int kor = 0;
+        while(num > pow(10,kor)){
+            kor++;
+        }
+        int size = kor + 1;
+        string snum(size,'-');
+        for(kor;kor > 0;kor--){
+            snum[kor] = '0' + (num % 10);
+            num /= 10;
+        }
+        return snum;
+    }else {
+        int kor = 0;
+        while (num >= pow(10, kor)) {
+            kor++;
+        }
+        int size = kor;
+        kor--;
+        string snum(size, '0');
+        for (kor; kor >= 0; kor--) {
+            snum[kor] = '0' + (num % 10);
+            num /= 10;
+        }
+        return snum;
+    }
+}
+
+struct list {
+    int numwords = 1;
+    string words;
+    list *next = NULL;
+};
+
+int main(){
+
+    list *head = new list;
+    list *endhead = head;
+
+
+    ifstream  inpfile("/home/gleb/laba/input.txt");
+    if(!inpfile.is_open()){
+        cerr << "program can't open file";
+        return 1;
+    }
+
+
+
+
+
+    bool checkw = false;
+    while(!inpfile.eof()){
+        string tmp;
+        inpfile  >> tmp;
+        if(tmp != ""){
+            endhead->words = tmp;
+            for (list *i = head; i != endhead; i = i->next) {
+                if (stringtolow(endhead->words) == stringtolow(i->words)) {
+                    endhead->numwords++;
+                }
+            }
+            endhead = endhead->next = new list;
+            if(!checkw){
+                checkw = true;
+            }
+        }
+    }
+
+    if(!checkw){
+        cerr << "there is no words";
+        return 2;
+    }
+
+    int max = 0;
+
+    for(list *i = head; i != endhead; i = i -> next){
+        if(max < i -> numwords){
+            max = i -> numwords;
+        }
+    }
+        cout << "your word(s) is(are) :";
+    for(list *i = head; i != endhead; i = i -> next){
+        if(max == i -> numwords){
+            cout << endl  << stringtolow(i -> words);
+        }
+    }
+
+    return 0;
+}
+
